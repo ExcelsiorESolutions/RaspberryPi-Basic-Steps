@@ -1,6 +1,6 @@
 # RaspberryPi-Basic-Steps
 
-## 1.) Setting Up Pi Zero
+## 1.) Setting Up Pi
   - Download latest version of [Raspbian](https://downloads.raspberrypi.org/raspbian_full_latest).
   - Format micro-sd card using [SD Card Formatter](https://www.sdcard.org/downloads/formatter/eula_windows/index.html).
   - Write Raspbian image on memory card using [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/files/latest/download).
