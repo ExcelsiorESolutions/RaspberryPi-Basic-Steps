@@ -1,7 +1,7 @@
 # RaspberryPi-Basic-Steps
 
 ## 1.) Setting Up Pi
-  - Download latest version of [Raspbian](https://downloads.raspberrypi.org/raspbian_full_latest).
+  - Download latest version of [Raspbian](https://www.raspberrypi.org/downloads/raspbian/).
   - Format micro-sd card using [SD Card Formatter](https://www.sdcard.org/downloads/formatter/eula_windows/index.html).
   - Write Raspbian image on memory card using [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/files/latest/download).
   
@@ -10,16 +10,22 @@
   - Create a new file in the root folder and name it as ***wpa_supplicant.conf***.
   - Type Following in that file:
   ```python
-    Country=US # Your 2-digit country code
     ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+    update_config=1
+    country=US
+         
     network={
-      ssid="YOUR_NETWORK_NAME"
-      psk="YOUR_PASSWORD"
-      key_mgmt=WPA-PSK
+        ssid="YOURSSID"
+        psk="YOURPASSWORD"
+        scan_ssid=1
     }
   ```
   - Now you can eject the SD card from your computer.
   - Insert your SD card into the Pi.
+  - Supply the custom HAT input with 12v Power Supply.
+  - Turn on Supply and at this point I recommend checking the USB output voltage of the hat, although all HATS are adjusted at 5V, A quick check is recommended.
+  - If all ok, Then we can connect the usb cable from HAT to raspi, So everything is now powered up with 12v power supply with proper regulated output.
+  - Let the raspi boot up for a minute.
   - At this point, open PuTTY and try SSHing into the Pi with the address `raspberrypi`
   - Login to pi using login- pi and password- raspberry.
   - At this point, you should run `sudo raspi-config` to expand the file system. 
@@ -31,9 +37,12 @@
   - Select ***5 Interfacing options***.
   - Select ***P3 VNC** then ***yes*** then ***OK*** then ***Finish***.
   - Reboot your Pi using ***sudo reboot***.
+  - Let pi Reboot for while
   - On your PC Open [VNC Viewer](https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-6.19.715-Windows.exe).
   - Enter hostname as ***raspberrypi***, then login.  You will be able to have desktop version of you over VNC
   - Close the ***Welcome to raspberry pi*** screen.
+  
+  
   
 ## 3.)Starting the server automatically as the pi is plugged in, No need for VNC/PUTTY
   - On the terminal `sudo nano /etc/rc.local`
